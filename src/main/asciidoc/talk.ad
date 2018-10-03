@@ -1,0 +1,118 @@
+= Fundamentos test unitarios
+:icons: font
+:twitter-tag: BPS
+:conference-tag:
+:talk-tag: Unit test
+:slide-link:
+:demo-link:
+:linkattrs:
+
+include::footer.ad[]
+
+[NOTE.speaker]
+====
+Contenido de la presentación:
+
+*	Secciones teóricas:
+**	Fundamentos. ¿Por qué usar test unitarios? Refactoring. Buenas prácticas. Niveles de test/Requisitos, Code coverage.
+**	Testing doubles. Manejo de dependencias. Dummies, Stubs, Fakes, Spies, Mocks. Prácticas recomendadas.
+*	TDD. Prácticas para mejorar los test. Red-Green-Refactor cycle. Ventajas y Desventajas.
+*	Secciones prácticas:
+**	Herramientas. JUnit – Annotations / Lifecycle. Prácticas. Mockito/Powermock. Hamcrest/Assertj.
+**	TDD Kata.
+
+====
+//== !
+//image::pattern-design-4pwbdv1y.jpg[background, size=auto]
+// Fuente: https://standaserigraf.wordpress.com/2015/09/30/pattern-design-tecnica-artistica-que-se-ocupa-de-la-creacion-de-patrones-graficos/
+
+== Contenido
+* Fundamentosd
+* Testing doubles
+* TDD
+* Herramientas
+
+== ¿Por qué escribimos tests? icon:lightbulb[]
+
+== ¿Por qué escribimos tests?
+* Para asegurarnos que el código funciona
+* ... pero escribir test automatizados es mucho más trabajo que simplemente escribir el `main` y validar entradas y salidas ...
+
+== El software cambia icon:code[]
+
+* Si el software cambia, los test deben cambiar con él
+* Si cambiamos la estructura de nuestras clases, tenemos que adaptar los test, perder tiempo
+* Si añadimos nuevas funcionalidades obviamente no vamos a tener tests
+* Si arreglamos icon:bug[], al principio no vamos a tener test
+
+== Refactoring icon:magic[]
+
+No todos los cambios son funcionales
+
+*Refactor* -- Proceso de de reestructurar un código fuente, alterando su estructura interna sin cambiar su comportamiento externo.
+
+== Razones para hacer refactoring icon:magic[]
+* Reparar problemas en el código (code smells)
+* Pagar deuda técnica
+* Mejorar rendimiento
+* Actualizar API
+* ...
+
+== !
+image::refactor-catalog.PNG[background, size=auto]
+//Fuente: https://refactoring.com/catalog/
+
+== Estrategias para hacer refactoring icon:magic[]
+. Preparar el código para la nueva funcionalidad
+. Añadir la nueva funcionalidad
+
+== ¿Cuándo hacer refactoring icon:magic[]?
+. Debería ser algo de todos los días
+. Los IDEs ayudan a automatizar de manera segura refactors simples
+
+== Regla del Boyscout -- Imagen
+
+== Refactors inseguros icon:exclamation-triangle[]
+No todos los refactors son seguros:
+
+* Inlining (efectos secundarios)
+* Cambiar dependencias
+* Cambiar algoritmos o estructuras de datos
+* ... Cualquier cambio no trivial
+
+== Refactors seguros icon:check[]
+
+Para hacer refactor seguros, *tenemos que escribir tests*
+
+No escribimos tests para asegurarnos que el código funcione
+
+Escribimos test para asegurarnos que siga funcionando
+
+== Usar tests:check[]
+Si no se escriben test se crea *código legacy*.
+
+image::legacy-code-sequence.PNG[]
+Es una relación *cíclica*.
+
+== Ciclo de refactor malo
+image::bad-refactoring-cycle.PNG[background, size=auto]
+
+== Ciclo de refactor bueno
+image::good-refactoring-cycle.PNG[background, size=auto]
+
+== Otras razones para hacer test
+
+* Es una prueba de que el código funciona.
+* Son una fuente de documentación, muestran las intenciones del código.
+* Mejoran el diseño de la aplicación.
+
+== Niveles de test
+
+* Unit tests
+* Integration tests
+* End to End tests
+* Acceptance / Business logic tests
+
+== Conclusiones
+
+include::self.ad[]
