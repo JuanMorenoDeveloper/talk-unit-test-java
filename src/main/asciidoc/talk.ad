@@ -113,6 +113,41 @@ image::good-refactoring-cycle.PNG[background, size=auto]
 * End to End tests
 * Acceptance / Business logic tests
 
+[NOTE.speaker]
+====
+* Unit tests: Prueban una sola unidad del sistema. No tienen dependencias de los componentes externos del sistema BD, WS, API. Falsifican sus dependencias.
+* Integration tests: Verifica que grupos de unidades puedan trabajar juntas correctamente.
+* End-to-End tests: Prueba flujos completos de interacciones en el sistema. Se puede considerar como extensión de los test de integración. Tiene dependencias reales a los componentes del sistema, BD, WS, APIs.
+* Acceptance / Business logic tests: Buscan responder la pregunta, ¿construimos lo que el cliente esperaba?. Normalmente se centra en la historia del usuario y usan el lenguaje del negocio.
+====
+
+== ¿Qué porcentaje debo cubrir?
+
+* 70% Unit tests
+* 20% Integration
+* 10%  End to End tests
+
+== ¿Qué es una unidad?
+
+* Una clase (la mayoría de las veces)
+* Muchas clases relacionadas
+* Un paquete. Usualmente solo se prueba el API público, la interna y privada se prueba de manera implícita.
+
+== Requisitos de un test
+
+* Rápido
+* Coherente
+* Modular
+* Independiente de la implementación
+
+[NOTE.speaker]
+====
+* Rápido: Los tests unitarios deben ejecutarse rápidamente. Entre más pronto y frecuente se ejecuten, más temprano se van a detectar las fallas y corregirse.
+* Coherente
+* Modular
+* Independiente de la implementación
+====
+
 == Conclusiones
 
 include::self.ad[]
