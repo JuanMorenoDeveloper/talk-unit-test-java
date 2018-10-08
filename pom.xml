@@ -29,9 +29,7 @@
     <asciidoctorj.version>1.5.7</asciidoctorj.version>
     <jruby.version>9.1.17.0</jruby.version>
     <revealjs.version>3.6.0</revealjs.version>
-    <!-- Use 'master' as version and remove the 'v' prefixing the download url to use the current snapshot version  -->
-    <!-- switching to 1.1.x breaks conversion -->
-    <asciidoctor-revealjs.version>1.0.4</asciidoctor-revealjs.version>
+    <asciidoctor-revealjs.version>1.1.3</asciidoctor-revealjs.version>
     <theme.dir>${project.slides.directory}/theme</theme.dir>
     <!-- Test versions -->
     <mockito-core.version>2.23.0</mockito-core.version>
@@ -260,7 +258,7 @@
               <outputDirectory>${project.slides.directory}</outputDirectory>
               <backend>revealjs</backend>
               <templateDir>
-                ${project.build.directory}/asciidoctor-reveal.js-${asciidoctor-revealjs.version}/templates/slim
+                ${project.build.directory}/asciidoctor-reveal.js-${asciidoctor-revealjs.version}/templates
               </templateDir>
               <sourceHighlighter>coderay</sourceHighlighter>
               <attributes>

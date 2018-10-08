@@ -86,7 +86,11 @@ table.CodeRay td.code>pre{padding:0}
 .CodeRay .insert .insert{color:#080}
 .CodeRay .delete .delete{color:#800}
 .CodeRay .change .change{color:#66f}
-.CodeRay .head .head{color:#f4f}</style><link href="reveal.js-3.6.0/lib/css/zenburn.css" rel="stylesheet" /><script>document.write( '<link rel="stylesheet" href="reveal.js-3.6.0/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );</script></head><body><div class="reveal"><div class="slides"><section class="title" data-state="title"><h1>Fundamentos test unitarios</h1><div class="preamble"><script type="text/javascript">
+.CodeRay .head .head{color:#f4f}</style><link href="reveal.js-3.6.0/lib/css/zenburn.css" rel="stylesheet" /><script>var link = document.createElement( 'link' );
+link.rel = 'stylesheet';
+link.type = 'text/css';
+link.href = window.location.search.match( /print-pdf/gi ) ? "reveal.js-3.6.0/css/print/pdf.css" : "reveal.js-3.6.0/css/print/paper.css";
+document.getElementsByTagName( 'head' )[0].appendChild( link );</script><!--[if lt IE 9]><script src="reveal.js-3.6.0/lib/js/html5shiv.js"></script><![endif]--></head><body><div class="reveal"><div class="slides"><section class="title" data-state="title"><h1>Fundamentos test unitarios</h1><div class="preamble"><script type="text/javascript">
     window.addEventListener("load", function() {
 
         revealDiv = document.querySelector("body div.reveal")
@@ -102,41 +106,43 @@ table.CodeRay td.code>pre{padding:0}
 </div>
 <aside class="notes"><div class="paragraph"><p>Contenido de la presentación:</p></div>
 <div class="ulist"><ul><li><p>Secciones teóricas:</p><div class="ulist"><ul><li><p>Fundamentos. ¿Por qué usar test unitarios? Refactoring. Buenas prácticas. Niveles de test/Requisitos, Code coverage.</p></li><li><p>Testing doubles. Manejo de dependencias. Dummies, Stubs, Fakes, Spies, Mocks. Prácticas recomendadas.</p></li></ul></div></li><li><p>TDD. Prácticas para mejorar los test. Red-Green-Refactor cycle. Ventajas y Desventajas.</p></li><li><p>Secciones prácticas:</p><div class="ulist"><ul><li><p>Herramientas. JUnit – Annotations / Lifecycle. Prácticas. Mockito/Powermock. Hamcrest/Assertj.</p></li><li><p>TDD Kata.</p></li></ul></div></li></ul></div></aside></div></section>
-<section id="_contenido"><h2>Contenido</h2><div class="ulist"><ul><li><p>Fundamentosd</p></li><li><p>Testing doubles</p></li><li><p>TDD</p></li><li><p>Herramientas</p></li></ul></div></section>
-<section id="_por_qu_escribimos_tests"><h2>¿Por qué escribimos tests? <span class="icon"><i class="fa fa-lightbulb"></i></span></h2></section>
-<section id="_por_qu_escribimos_tests_2"><h2>¿Por qué escribimos tests?</h2><div class="ulist"><ul><li><p>Para asegurarnos que el código funciona</p></li><li><p>&#8230;&#8203; pero escribir test automatizados es mucho más trabajo que simplemente escribir el <code>main</code> y validar entradas y salidas &#8230;&#8203;</p></li></ul></div></section>
-<section id="_el_software_cambia"><h2>El software cambia <span class="icon"><i class="fa fa-code"></i></span></h2><div class="ulist"><ul><li><p>Si el software cambia, los test deben cambiar con él</p></li><li><p>Si cambiamos la estructura de nuestras clases, tenemos que adaptar los test, perder tiempo</p></li><li><p>Si añadimos nuevas funcionalidades obviamente no vamos a tener tests</p></li><li><p>Si arreglamos <span class="icon"><i class="fa fa-bug"></i></span>, al principio no vamos a tener test</p></li></ul></div></section>
-<section id="_refactoring"><h2>Refactoring <span class="icon"><i class="fa fa-magic"></i></span></h2><div class="paragraph"><p>No todos los cambios son funcionales</p></div>
+<section id="contenido"><h2>Contenido</h2><div class="ulist"><ul><li><p>Fundamentosd</p></li><li><p>Testing doubles</p></li><li><p>TDD</p></li><li><p>Herramientas</p></li></ul></div></section>
+<section id="por_qu_escribimos_tests"><h2>¿Por qué escribimos tests? <span class="icon"><i class="fa fa-lightbulb"></i></span></h2></section>
+<section id="por_qu_escribimos_tests_2"><h2>¿Por qué escribimos tests?</h2><div class="ulist"><ul><li><p>Para asegurarnos que el código funciona</p></li><li><p>&#8230;&#8203; pero escribir test automatizados es mucho más trabajo que simplemente escribir el <code>main</code> y validar entradas y salidas &#8230;&#8203;</p></li></ul></div></section>
+<section id="el_software_cambia"><h2>El software cambia <span class="icon"><i class="fa fa-code"></i></span></h2><div class="ulist"><ul><li><p>Si el software cambia, los test deben cambiar con él</p></li><li><p>Si cambiamos la estructura de nuestras clases, tenemos que adaptar los test, perder tiempo</p></li><li><p>Si añadimos nuevas funcionalidades obviamente no vamos a tener tests</p></li><li><p>Si arreglamos <span class="icon"><i class="fa fa-bug"></i></span>, al principio no vamos a tener test</p></li></ul></div></section>
+<section id="refactoring"><h2>Refactoring <span class="icon"><i class="fa fa-magic"></i></span></h2><div class="paragraph"><p>No todos los cambios son funcionales</p></div>
 <div class="paragraph"><p><strong>Refactor</strong>&#8201;&#8212;&#8201;Proceso de de reestructurar un código fuente, alterando su estructura interna sin cambiar su comportamiento externo.</p></div></section>
-<section id="_razones_para_hacer_refactoring"><h2>Razones para hacer refactoring <span class="icon"><i class="fa fa-magic"></i></span></h2><div class="ulist"><ul><li><p>Reparar problemas en el código (code smells)</p></li><li><p>Pagar deuda técnica</p></li><li><p>Mejorar rendimiento</p></li><li><p>Actualizar API</p></li><li><p>&#8230;&#8203;</p></li></ul></div></section>
-<section><div class="imageblock" style=""><img src="images/refactor-catalog.PNG" alt="background" /></div></section>
-<section id="_estrategias_para_hacer_refactoring"><h2>Estrategias para hacer refactoring <span class="icon"><i class="fa fa-magic"></i></span></h2><div class="olist arabic"><ol class="arabic"><li><p>Preparar el código para la nueva funcionalidad</p></li><li><p>Añadir la nueva funcionalidad</p></li></ol></div></section>
-<section id="_cundo_hacer_refactoring"><h2>¿Cuándo hacer refactoring <span class="icon"><i class="fa fa-magic"></i></span>?</h2><div class="olist arabic"><ol class="arabic"><li><p>Debería ser algo de todos los días</p></li><li><p>Los IDEs ayudan a automatizar de manera segura refactors simples</p></li></ol></div></section>
-<section id="_regla_del_boyscoutimagen"><h2>Regla del Boyscout&#8201;&#8212;&#8201;Imagen</h2></section>
-<section id="_refactors_inseguros"><h2>Refactors inseguros <span class="icon"><i class="fa fa-exclamation-triangle"></i></span></h2><div class="paragraph"><p>No todos los refactors son seguros:</p></div>
+<section id="razones_para_hacer_refactoring"><h2>Razones para hacer refactoring <span class="icon"><i class="fa fa-magic"></i></span></h2><div class="ulist"><ul><li><p>Reparar problemas en el código (code smells)</p></li><li><p>Pagar deuda técnica</p></li><li><p>Mejorar rendimiento</p></li><li><p>Actualizar API</p></li><li><p>&#8230;&#8203;</p></li></ul></div></section>
+<section data-background-image="images/refactor-catalog.PNG" data-background-size="auto"></section>
+<section id="estrategias_para_hacer_refactoring"><h2>Estrategias para hacer refactoring <span class="icon"><i class="fa fa-magic"></i></span></h2><div class="olist arabic"><ol class="arabic"><li><p>Preparar el código para la nueva funcionalidad</p></li><li><p>Añadir la nueva funcionalidad</p></li></ol></div></section>
+<section id="cundo_hacer_refactoring"><h2>¿Cuándo hacer refactoring <span class="icon"><i class="fa fa-magic"></i></span>?</h2><div class="olist arabic"><ol class="arabic"><li><p>Debería ser algo de todos los días</p></li><li><p>Los IDEs ayudan a automatizar de manera segura refactors simples</p></li></ol></div></section>
+<section id="regla_del_boyscoutimagen"><h2>Regla del Boyscout&#8201;&#8212;&#8201;Imagen</h2></section>
+<section id="refactors_inseguros"><h2>Refactors inseguros <span class="icon"><i class="fa fa-exclamation-triangle"></i></span></h2><div class="paragraph"><p>No todos los refactors son seguros:</p></div>
 <div class="ulist"><ul><li><p>Inlining (efectos secundarios)</p></li><li><p>Cambiar dependencias</p></li><li><p>Cambiar algoritmos o estructuras de datos</p></li><li><p>&#8230;&#8203; Cualquier cambio no trivial</p></li></ul></div></section>
-<section id="_refactors_seguros"><h2>Refactors seguros <span class="icon"><i class="fa fa-check"></i></span></h2><div class="paragraph"><p>Para hacer refactor seguros, <strong>tenemos que escribir tests</strong></p></div>
+<section id="refactors_seguros"><h2>Refactors seguros <span class="icon"><i class="fa fa-check"></i></span></h2><div class="paragraph"><p>Para hacer refactor seguros, <strong>tenemos que escribir tests</strong></p></div>
 <div class="paragraph"><p>No escribimos tests para asegurarnos que el código funcione</p></div>
 <div class="paragraph"><p>Escribimos test para asegurarnos que siga funcionando</p></div></section>
-<section id="_usar_testscheck"><h2>Usar tests:check[]</h2><div class="paragraph"><p>Si no se escriben test se crea <strong>código legacy</strong>.</p></div>
+<section id="usar_testscheck"><h2>Usar tests:check[]</h2><div class="paragraph"><p>Si no se escriben test se crea <strong>código legacy</strong>.</p></div>
 <div class="imageblock" style=""><img src="images/legacy-code-sequence.PNG" alt="legacy code sequence" /></div>
 <div class="paragraph"><p>Es una relación <strong>cíclica</strong>.</p></div></section>
-<section id="_ciclo_de_refactor_malo"><h2>Ciclo de refactor malo</h2><div class="imageblock" style=""><img src="images/bad-refactoring-cycle.PNG" alt="background" /></div></section>
-<section id="_ciclo_de_refactor_bueno"><h2>Ciclo de refactor bueno</h2><div class="imageblock" style=""><img src="images/good-refactoring-cycle.PNG" alt="background" /></div></section>
-<section id="_otras_razones_para_hacer_test"><h2>Otras razones para hacer test</h2><div class="ulist"><ul><li><p>Es una prueba de que el código funciona.</p></li><li><p>Son una fuente de documentación, muestran las intenciones del código.</p></li><li><p>Mejoran el diseño de la aplicación.</p></li></ul></div></section>
-<section id="_niveles_de_test"><h2>Niveles de test</h2><div class="ulist"><ul><li><p>Unit tests</p></li><li><p>Integration tests</p></li><li><p>End to End tests</p></li><li><p>Acceptance / Business logic tests</p></li></ul></div>
+<section id="ciclo_de_refactor_malo" data-background-image="images/bad-refactoring-cycle.PNG" data-background-size="auto"><h2>Ciclo de refactor malo</h2></section>
+<section id="ciclo_de_refactor_bueno" data-background-image="images/good-refactoring-cycle.PNG" data-background-size="auto"><h2>Ciclo de refactor bueno</h2></section>
+<section id="otras_razones_para_hacer_test"><h2>Otras razones para hacer test</h2><div class="ulist"><ul><li><p>Es una prueba de que el código funciona.</p></li><li><p>Son una fuente de documentación, muestran las intenciones del código.</p></li><li><p>Mejoran el diseño de la aplicación.</p></li></ul></div></section>
+<section id="niveles_de_test"><h2>Niveles de test</h2><div class="ulist"><ul><li><p>Unit tests</p></li><li><p>Integration tests</p></li><li><p>End to End tests</p></li><li><p>Acceptance / Business logic tests</p></li></ul></div>
 <aside class="notes"><div class="ulist"><ul><li><p>Unit tests: Prueban una sola unidad del sistema. No tienen dependencias de los componentes externos del sistema BD, WS, API. Falsifican sus dependencias.</p></li><li><p>Integration tests: Verifica que grupos de unidades puedan trabajar juntas correctamente.</p></li><li><p>End-to-End tests: Prueba flujos completos de interacciones en el sistema. Se puede considerar como extensión de los test de integración. Tiene dependencias reales a los componentes del sistema, BD, WS, APIs.</p></li><li><p>Acceptance / Business logic tests: Buscan responder la pregunta, ¿construimos lo que el cliente esperaba?. Normalmente se centra en la historia del usuario y usan el lenguaje del negocio.</p></li></ul></div></aside></section>
-<section id="_qu_porcentaje_debo_cubrir"><h2>¿Qué porcentaje debo cubrir?</h2><div class="ulist"><ul><li><p>70% Unit tests</p></li><li><p>20% Integration</p></li><li><p>10%  End to End tests</p></li></ul></div></section>
-<section id="_qu_es_una_unidad"><h2>¿Qué es una unidad?</h2><div class="ulist"><ul><li><p>Una clase (la mayoría de las veces)</p></li><li><p>Muchas clases relacionadas</p></li><li><p>Un paquete. Usualmente solo se prueba el API público, la interna y privada se prueba de manera implícita.</p></li></ul></div></section>
-<section id="_requisitos_de_un_test"><h2>Requisitos de un test</h2><div class="ulist"><ul><li><p>Rápido</p></li><li><p>Coherente</p></li><li><p>Modular</p></li><li><p>Independiente de la implementación</p></li></ul></div>
+<section id="qu_porcentaje_debo_cubrir"><h2>¿Qué porcentaje debo cubrir?</h2><div class="ulist"><ul><li><p>70% Unit tests</p></li><li><p>20% Integration</p></li><li><p>10%  End to End tests</p></li></ul></div></section>
+<section id="qu_es_una_unidad"><h2>¿Qué es una unidad?</h2><div class="ulist"><ul><li><p>Una clase (la mayoría de las veces)</p></li><li><p>Muchas clases relacionadas</p></li><li><p>Un paquete. Usualmente solo se prueba el API público, la interna y privada se prueba de manera implícita.</p></li></ul></div></section>
+<section id="requisitos_de_un_test"><h2>Requisitos de un test</h2><div class="ulist"><ul><li><p>Rápido</p></li><li><p>Coherente</p></li><li><p>Modular</p></li><li><p>Independiente de la implementación</p></li></ul></div>
 <aside class="notes"><div class="ulist"><ul><li><p>Rápido: Los tests unitarios deben ejecutarse rápidamente. Entre más pronto y frecuente se ejecuten, más temprano se van a detectar las fallas y corregirse.</p></li><li><p>Coherente</p></li><li><p>Modular</p></li><li><p>Independiente de la implementación</p></li></ul></div></aside></section>
-<section id="_conclusiones"><h2>Conclusiones</h2></section>
-<section id="_juan_moreno"><h2>Juan Moreno</h2><div class="ulist"><ul><li><p>Fuentes:</p><div class="ulist"><ul><li><p><a href="{https://webcourse.cs.technion.ac.il/236700/Spring2018/ho.html}">236700 - Software Design, Spring2018 - Course Material</a></p></li><li><p><a href="{https://refactoring.com}">Refactoring</a></p></li></ul></div></li><li><p><a href="">Presentación online en: </a></p></li><li><p><a href="">Demos online en: </a></p></li></ul></div></section></div></div><script src="reveal.js-3.6.0/lib/js/head.min.js"></script><script src="reveal.js-3.6.0/js/reveal.js"></script><script>// See https://github.com/hakimel/reveal.js#configuration for a full list of configuration options
+<section id="conclusiones"><h2>Conclusiones</h2></section>
+<section id="juan_moreno"><h2>Juan Moreno</h2><div class="ulist"><ul><li><p>Fuentes:</p><div class="ulist"><ul><li><p><a href="{https://webcourse.cs.technion.ac.il/236700/Spring2018/ho.html}">236700 - Software Design, Spring2018 - Course Material</a></p></li><li><p><a href="{https://refactoring.com}">Refactoring</a></p></li></ul></div></li><li><p><a href="">Presentación online en: </a></p></li><li><p><a href="">Demos online en: </a></p></li></ul></div></section></div></div><script src="reveal.js-3.6.0/lib/js/head.min.js"></script><script src="reveal.js-3.6.0/js/reveal.js"></script><script>// See https://github.com/hakimel/reveal.js#configuration for a full list of configuration options
 Reveal.initialize({
   // Display controls in the bottom right corner
   controls: true,
   // Display a presentation progress bar
   progress: true,
+  // Set a per-slide timing for speaker notes, null means none
+  defaultTiming: null,
   // Display the page number of the current slide
   slideNumber: false,
   // Push each slide change to the browser history
@@ -153,11 +159,23 @@ Reveal.initialize({
   loop: false,
   // Change the presentation direction to be RTL
   rtl: false,
+  // Randomizes the order of slides each time the presentation loads
+  shuffle: false,
   // Turns fragments on and off globally
   fragments: true,
   // Flags if the presentation is running in an embedded mode,
   // i.e. contained within a limited portion of the screen
   embedded: false,
+  // Flags if we should show a help overlay when the questionmark
+  // key is pressed
+  help: true,
+  // Flags if speaker notes should be visible to all viewers
+  showNotes: false,
+  // Global override for autolaying embedded media (video/audio/iframe)
+  // - null: Media will only autoplay if data-autoplay is present
+  // - true: All media will autoplay, regardless of individual setting
+  // - false: No media will autoplay, regardless of individual setting
+  autoPlayMedia: null,
   // Number of milliseconds between automatically proceeding to the
   // next slide, disabled when set to 0, this value can be overwritten
   // by using a data-autoslide attribute on your slides
@@ -205,7 +223,7 @@ Reveal.initialize({
       { src: 'reveal.js-3.6.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
       { src: 'reveal.js-3.6.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
       
-      { src: 'reveal.js-3.6.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-      { src: 'reveal.js-3.6.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+      { src: 'reveal.js-3.6.0/plugin/zoom-js/zoom.js', async: true },
+      { src: 'reveal.js-3.6.0/plugin/notes/notes.js', async: true }
   ]
 });</script></body></html>
