@@ -218,3 +218,13 @@ section[data-background-size] .footer span {
   margin-bottom: 10px;
   font-size: 60%;
 }
+
+.reveal section img {
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+
+.reveal pre {
+  box-shadow: none;
+}

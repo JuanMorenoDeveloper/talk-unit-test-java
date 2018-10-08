@@ -454,4 +454,14 @@ section[data-background-size] .footer span {
   font-size: 60%;
 }
 
+.reveal section img {
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+
+.reveal pre {
+  box-shadow: none;
+}
+
 /*# sourceMappingURL=ude.css.map */
