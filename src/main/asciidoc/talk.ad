@@ -3,7 +3,7 @@
 :twitter-tag: BPS
 :conference-tag:
 :talk-tag: Unit test
-:slide-link:
+:slide-link: http://bit.ly/intro-unit-test
 :demo-link:
 :linkattrs:
 
@@ -70,7 +70,9 @@ image::refactor-catalog.PNG[background, size=auto]
 . Debería ser algo de todos los días
 . Los IDEs ayudan a automatizar de manera segura refactors simples
 
-== Regla del Boyscout -- Imagen
+== Regla del Boyscout
+image::boy-scout-rule.jpeg[background, size=auto]
+//Fuente: https://medium.com/@biratkirat/step-8-the-boy-scout-rule-robert-c-martin-uncle-bob-9ac839778385
 
 == Refactors inseguros icon:exclamation-triangle[]
 No todos los refactors son seguros:
@@ -118,7 +120,7 @@ image::good-refactoring-cycle.PNG[background, size=auto]
 * Unit tests: Prueban una sola unidad del sistema. No tienen dependencias de los componentes externos del sistema BD, WS, API. Falsifican sus dependencias.
 * Integration tests: Verifica que grupos de unidades puedan trabajar juntas correctamente.
 * End-to-End tests: Prueba flujos completos de interacciones en el sistema. Se puede considerar como extensión de los test de integración. Tiene dependencias reales a los componentes del sistema, BD, WS, APIs.
-* Acceptance / Business logic tests: Buscan responder la pregunta, ¿construimos lo que el cliente esperaba?. Normalmente se centra en la historia del usuario y usan el lenguaje del negocio.
+* Acceptance / Business logic tests: Buscan responder la pregunta, ¿construimos lo que el cliente esperaba? Normalmente se centra en la historia del usuario y usan el lenguaje del negocio.
 ====
 
 == ¿Qué porcentaje debo cubrir?
@@ -197,7 +199,7 @@ public void givenString_whenReverse_getReverseString() {
 ====
 
 == ¿Los test nos hace lentos?
-* Los test nos ayudan a conseguir fallos. Por lo tanto se introducen menos fallos.
+* Los test nos ayudan a conseguir fallos. Por lo tanto, se introducen menos fallos.
 * Nos permite agregar cambios con confianza. Mejora la productividad.
 
 == Conclusiones
