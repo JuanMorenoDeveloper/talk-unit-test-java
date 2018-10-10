@@ -1,1 +1,1 @@
-# Charla acerca de test unitarios con Java
+# Charla introductoria de test unitarios con Java
