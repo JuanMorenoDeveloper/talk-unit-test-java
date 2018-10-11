@@ -52,7 +52,7 @@ No todos los cambios son funcionales
 *Refactor* -- Proceso de de reestructurar un código fuente, alterando su estructura interna sin cambiar su comportamiento externo.
 
 == Razones para hacer refactoring icon:magic[]
-* Reparar problemas en el código (code smells)
+* Reparar icon:bug[] en el código (code smells)
 * Pagar deuda técnica
 * Mejorar rendimiento
 * Actualizar API
@@ -88,9 +88,9 @@ Para hacer refactor seguros, *tenemos que escribir tests*
 
 No escribimos tests para asegurarnos que el código funcione
 
-Escribimos test para asegurarnos que siga funcionando
+*Escribimos test para asegurarnos que siga funcionando*
 
-== Usar tests:check[]
+== Usar tests icon:check[]
 Si no se escriben test se crea *código legacy*.
 
 image::legacy-code-sequence.PNG[]
@@ -198,10 +198,121 @@ public void givenString_whenReverse_getReverseString() {
 * Si se requiere probar un método privado se recomienda, extraer a una clase o en última instancia cambiar a package-private.
 ====
 
-== ¿Los test nos hace lentos?
+== ¿Los test nos hacen lentos?
 * Los test nos ayudan a conseguir fallos. Por lo tanto, se introducen menos fallos.
 * Nos permite agregar cambios con confianza. Mejora la productividad.
 
+== Otros tipos de tests
+* Behavior-driven development
+* Property tests
+* Mutation testing
+* Design by Contract
+
+[NOTE.speaker]
+====
+* Behavior-driven development: Usa un lenguaje específico del dominio para escribir los tests. Están estructurados en features e historias.
+* Property tests: Maneja multiples entradas para validar el comportamiento de las salidas sin necesidad de fijarlas en el código.
+* Mutation testing: Cambia el código fuente de los test para ver si fallan. Valida el acoplamiento entre los test y el código fuente.
+Ofrece un mejor indicador que la cobertura.
+* Design by Contract: Valida aserciones pre y post ejecución de los métodos. Se hace control en runtime. Se puede validar en tiempo de compilación usando anotaciones.
+====
+
+== Ok. Suena genial ¿Pero cómo pruebo mis dependencias?
+
+== Testing doubles
+* Dependencias como objetos específicos de los test.
+* Dependencias simples llevan a menos errores.
+* Facilidad para controlar su comportamiento.
+* Facilidad para verificar su uso en los test.
+
+[NOTE.speaker]
+====
+* Inicializar dependencias puede llevar mucho trabajo y pueden agregar errores.
+* Pueden existir fallas en las dependencias.
+* Operaciones de I/O van a ralentizar los tests.
+* Usar las clases concretas de las dependencias van acoplar nuestros tests a la implementación.
+====
+
+== Tipos de test doubles
+* Dummies
+* Stubs
+* Spikes
+* Fakes
+* Spies
+* Mocks
+
+[NOTE.speaker]
+====
+* *Dummy*: Son objetos que se envían, pero nunca se utilizan en el test.
+Usualmente se usan para llenar parámetros.
+
+* *Stub*: Es un objeto en el que configuras que cuando llames a un método devuelva un valor determinado.
+Usualmente se usan para cosas que no importan al test.
+
+* *Fake*: Es un objeto que implementado completamente y que funciona, como un objeto normal sin ser simulado,
+pero se diferencia en que está falseando algo para hacer alguna cosa más fácil de probar.
+Un ejemplo de esto podría ser un objeto que utiliza una base de datos en memoria en lugar de acceder
+a consultar la base de datos de producción.
+
+* *Spy*: Estos objetos guardan las acciones que se hacen sobre ellos. Hace una especie de seguimiento
+sobre qué métodos se han llamado y con qué parámetros.
+
+* *Mock*: Muy similar a un spy, pero no solo guardan las acciones que se hacen sobre ellos, también es
+necesario configurar qué comportamiento esperas cuando alguien llame a alguno de sus métodos.
+====
+
+== ¿Cuál test double debo usar? 1/2
+* Se recomienda seguir el PoLP (Principio de menor privilegio)
+* Buscar la opción menos poderosa que pueda resolver el problema.
+
+[NOTE.speaker]
+====
+Beneficios de usar PoLP:
+* Declarativo
+* Seguro
+* Menos elementos
+* Resistencia al cambio
+====
+
+== ¿Cuál test double debo usar? 2/2
+* Siguiendo el principio sería:
+** ¿No necesitamos usar test doubles? Entonces no los usemos
+** ¿Me sirve un stub? Entonces uso un stub
+** ¿Necesito más control? Vamos por un fake
+** ¿Quiero controlar todo? Usemos mocks
+
+== TDD
+*Test driven development*
+
+Proceso de escribir test antes de código de producción
+
+== Red-Green-Refactor cycle
+image::tdd-cycle.jpg[]
+//Fuente: https://ayudalaravel.com/tdd-desarrollo-guiado-pruebas/
+
+== Red-Green-Refactor steps
+1. Agregar un test (Entiendo el propósito de la funcionalidad)
+2. Ejecutar todos los test y ver si el nuevo test [red]#falla# (Debería fallar por las razones conocidas)
+3. Escribir el mínimo código para que [green]#pase# el test
+4. Ejecutar nuevamente el test (Valida el punto anterior)
+5. [blue]#Refactorizar# el código (Se optimiza) *…​Repetir el proceso*
+
+== Beneficios TDD
+* Código con pruebas. No se pueden agregar nuevas funcionalidades sin test.
+* Ciclo de desarrollo rápido y seguro.
+* Confianza en el código y los tests.
+
+== Algunas Librerías Java para test
+* link:{https://junit.org/junit5/}[JUnit]
+* link:{https://site.mockito.org/}[Mockito]
+* link:{http://joel-costigliola.github.io/assertj/}[AssertJ]
+* link:{https://cucumber.io/}[Cucumber]
+
 == Conclusiones
+* El uso de test agrega calidad a los sistemas
+* Permiten hacer refactor con confianza
+* Deben ser independientes a nivel de datos
+* Mejora el diseño
+* Existen variedad de estrategias y herramientas para implementarlos
 
 include::self.ad[]

@@ -375,14 +375,6 @@ body {
   background-image: url("images/grey_@2X.png");
 }
 
-.logo-bps {
-  background-image: url("images/bps-logo.webp");
-}
-
-.logo-accsa {
-  background-image: url("images/accsa-logo.png");
-}
-
 div.slide-background.present:not(.stack) {
   filter: drop-shadow(5px 5px 5px #949292);
 }
@@ -463,6 +455,18 @@ section[data-background-size] .footer span {
 
 .reveal pre {
   box-shadow: none;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
+.blue {
+  color: blue;
 }
 
 /*# sourceMappingURL=ude.css.map */
