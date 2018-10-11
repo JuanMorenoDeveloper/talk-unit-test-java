@@ -101,8 +101,8 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );</script><!--[if 
 </script>
 <div id="schauderhaft-footer" class="footer">
     <span class="element">BPS</span>
-    <span class="element"></span>
     <span class="element">Unit test</span>
+    <span class="element">ACCSA</span>
 </div>
 <aside class="notes"><div class="paragraph"><p>Contenido de la presentación:</p></div>
 <div class="ulist"><ul><li><p>Secciones teóricas:</p><div class="ulist"><ul><li><p>Fundamentos. ¿Por qué usar test unitarios? Refactoring. Buenas prácticas. Niveles de test/Requisitos, Code coverage.</p></li><li><p>Testing doubles. Manejo de dependencias. Dummies, Stubs, Fakes, Spies, Mocks. Prácticas recomendadas.</p></li></ul></div></li><li><p>TDD. Prácticas para mejorar los test. Red-Green-Refactor cycle. Ventajas y Desventajas.</p></li><li><p>Secciones prácticas:</p><div class="ulist"><ul><li><p>Herramientas. JUnit – Annotations / Lifecycle. Prácticas. Mockito/Powermock. Hamcrest/Assertj.</p></li><li><p>TDD Kata.</p></li></ul></div></li></ul></div></aside></div></section>
@@ -156,7 +156,9 @@ Normalmente no se debe cambiar un test si la implementación cambia, solo se hac
 <aside class="notes"><div class="ulist"><ul><li><p>Si se requiere probar un método privado se recomienda, extraer a una clase o en última instancia cambiar a package-private.</p></li></ul></div></aside></section>
 <section id="los_test_nos_hace_lentos"><h2>¿Los test nos hace lentos?</h2><div class="ulist"><ul><li><p>Los test nos ayudan a conseguir fallos. Por lo tanto, se introducen menos fallos.</p></li><li><p>Nos permite agregar cambios con confianza. Mejora la productividad.</p></li></ul></div></section>
 <section id="conclusiones"><h2>Conclusiones</h2></section>
-<section id="juan_moreno"><h2>Juan Moreno</h2><div class="ulist"><ul><li><p>Fuentes:</p><div class="ulist"><ul><li><p><a href="{https://webcourse.cs.technion.ac.il/236700/Spring2018/ho.html}">236700 - Software Design, Spring2018 - Course Material</a></p></li><li><p><a href="{https://refactoring.com}">Refactoring</a></p></li></ul></div></li><li><p><a href="http://bit.ly/intro-unit-test">Presentación online en: http://bit.ly/intro-unit-test</a></p></li></ul></div></section></div></div><script src="reveal.js-3.7.0/lib/js/head.min.js"></script><script src="reveal.js-3.7.0/js/reveal.js"></script><script>// See https://github.com/hakimel/reveal.js#configuration for a full list of configuration options
+<section id="juan_moreno"><h2>Juan Moreno</h2><span>
+<img src="images/accsa-logo.jpg" style="vertical-align: middle; border:none;" width="200"/>
+<div class="ulist"><ul><li><p>Fuentes:</p><div class="ulist"><ul><li><p><a href="{https://webcourse.cs.technion.ac.il/236700/Spring2018/ho.html}">236700 - Software Design, Spring2018 - Course Material</a></p></li><li><p><a href="{https://refactoring.com}">Refactoring</a></p></li></ul></div></li><li><p><a href="http://bit.ly/intro-java-unit-test">Presentación online en: http://bit.ly/intro-java-unit-test</a></p></li></ul></div></section></div></div><script src="reveal.js-3.7.0/lib/js/head.min.js"></script><script src="reveal.js-3.7.0/js/reveal.js"></script><script>// See https://github.com/hakimel/reveal.js#configuration for a full list of configuration options
 Reveal.initialize({
   // Display controls in the bottom right corner
   controls: true,

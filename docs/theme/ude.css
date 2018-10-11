@@ -11,22 +11,6 @@
   font-weight: 400;
   src: local("Amatic SC Regular"), local("AmaticSC-Regular"), url("fonts/amatic-sc-v9-latin-regular.woff2") format("woff2"), url("fonts/amatic-sc-v9-latin-regular.woff") format("woff");
 }
-/* roboto-100 - latin_latin-ext */
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 100;
-  src: local("Roboto Thin"), local("Roboto-Thin"), url("fonts/roboto-v15-latin_latin-ext-100.woff2") format("woff2"), url("fonts/roboto-v15-latin_latin-ext-100.woff") format("woff");
-  /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-}
-/* roboto-300 - latin_latin-ext */
-@font-face {
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 300;
-  src: local("Roboto Light"), local("Roboto-Light"), url("fonts/roboto-v15-latin_latin-ext-300.woff2") format("woff2"), url("fonts/roboto-v15-latin_latin-ext-300.woff") format("woff");
-  /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
-}
 /* roboto-mono-regular - latin_latin-ext */
 @font-face {
   font-family: 'Roboto Mono';
@@ -365,8 +349,7 @@ body {
 }
 
 .reveal p code {
-  background-color: #949292;
-  background-image: none;
+  background: #949292 none;
   display: inline-block;
   border-radius: 7px;
   font-family: "Roboto Mono", monospace;
@@ -390,6 +373,14 @@ body {
 
 body {
   background-image: url("images/grey_@2X.png");
+}
+
+.logo-bps {
+  background-image: url("images/bps-logo.webp");
+}
+
+.logo-accsa {
+  background-image: url("images/accsa-logo.png");
 }
 
 div.slide-background.present:not(.stack) {
@@ -419,7 +410,7 @@ section[data-background-size] {
 }
 
 .reveal strong {
-  font-family: 'Amatic SC';
+  font-family: 'Amatic SC', serif;
   font-size: 120%;
 }
 
@@ -433,7 +424,7 @@ section[data-background-size] {
 
 .footer span {
   display: table-cell;
-  padding: 0px 15px 5px;
+  padding: 0 15px 5px;
   text-align: center;
   font-family: "Roboto Mono", monospace;
   font-size: 70%;

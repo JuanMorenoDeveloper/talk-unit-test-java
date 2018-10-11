@@ -1,5 +1,8 @@
 == Juan Moreno
-
+++++
+<span>
+<img src="images/accsa-logo.jpg" style="vertical-align: middle; border:none;" width="200"/>
+++++
 * Fuentes:
 ** link:{https://webcourse.cs.technion.ac.il/236700/Spring2018/ho.html}[236700 - Software Design, Spring2018 - Course Material]
 ** link:{https://refactoring.com}[Refactoring]

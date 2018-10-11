@@ -1,9 +1,9 @@
 = Fundamentos test unitarios
 :icons: font
 :twitter-tag: BPS
-:conference-tag:
-:talk-tag: Unit test
-:slide-link: http://bit.ly/intro-unit-test
+:conference-tag: Unit test
+:talk-tag: ACCSA
+:slide-link: http://bit.ly/intro-java-unit-test
 :demo-link:
 :linkattrs:
 
@@ -177,7 +177,7 @@ public void givenString_whenReverse_getReverseString() {
 }
 ----
 
-== Buenas Prácticas
+== Buenas Prácticas 1/2
 * Evitar repetir código de producción.
 * Se debe evitar escribir lógica en los test.
 * Agregar al menos un test cuando se soluciona una falla.
@@ -189,7 +189,7 @@ public void givenString_whenReverse_getReverseString() {
 * Se recomienda especificar entradas y salidas concretas en los test.
 ====
 
-== Buenas Prácticas
+== Buenas Prácticas 2/2
 * Evitar hacer test de métodos privados. Se debe probar las interfaces no las implementaciones.
 * Antes de pasar, los test deben fallar.
 
