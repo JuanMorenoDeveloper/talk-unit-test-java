@@ -143,7 +143,7 @@ Normalmente no se debe cambiar un test si la implementación cambia, solo se hac
   Preferir en lo posible test de caja negra que de caja blanca.</p><div class="ulist"><ul><li><p>Caja negra: Se prueba la funcionalidad sin conocer su implementación.</p></li><li><p>Caja blanca: Se prueba conociendo los detalles de la implementación.</p></li></ul></div></li></ul></div></aside></section>
 <section id="estructura_de_un_test"><h2>Estructura de un test</h2><div class="olist arabic"><ol class="arabic"><li><p>Arrange (Planificación)</p></li><li><p>Act (Acción)</p></li><li><p>Assert (Afirmación)</p></li></ol></div></section>
 <section><div class="listingblock"><div class="content"><pre class="CodeRay"><code class="java language-java"><span class="annotation">@Test</span>
-<span class="directive">public</span> <span class="type">void</span> givenString_whenReverse_getReverseString() {
+<span class="directive">public</span> <span class="type">void</span> givenString_whenReverse_thenGetReverseString() {
   <span class="predefined-type">String</span> input = <span class="string"><span class="delimiter">&quot;</span><span class="content">abc</span><span class="delimiter">&quot;</span></span>; <i class="conum" data-value="1"></i><b>(1)</b>
 
   <span class="predefined-type">String</span> result = StringUtils.reverse(input); <i class="conum" data-value="2"></i><b>(2)</b>

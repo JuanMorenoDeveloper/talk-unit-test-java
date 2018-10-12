@@ -168,7 +168,7 @@ Normalmente no se debe cambiar un test si la implementación cambia, solo se hac
 [source, java]
 ----
 @Test
-public void givenString_whenReverse_getReverseString() {
+public void givenString_whenReverse_thenGetReverseString() {
   String input = "abc"; // <1>
 
   String result = StringUtils.reverse(input); //<2>
