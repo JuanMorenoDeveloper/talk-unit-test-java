@@ -12,11 +12,6 @@
   <name>unit-test-java</name>
   <description>Unit Test with Java</description>
 
-  <modules>
-    <module>frameworks</module>
-    <module>tdd</module>
-  </modules>
-
   <properties>
     <!-- Project configuration -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -125,46 +120,6 @@
         <configuration>
           <excludes>
             <exclude>**/*IntegrationTest.java</exclude>
-          </excludes>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-pmd-plugin</artifactId>
-        <version>${maven-pmd-plugin.version}</version>
-        <configuration>
-          <aggregate>true</aggregate>
-          <minimumTokens>100</minimumTokens>
-          <sourceEncoding>utf-8</sourceEncoding>
-          <targetJdk>${java.version}</targetJdk>
-          <skipEmptyReport>false</skipEmptyReport>
-          <ignoreLiterals>false</ignoreLiterals>
-          <rulesets>
-            <ruleset>${basedir}/pmd-rulesets.xml</ruleset>
-          </rulesets>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>com.github.spotbugs</groupId>
-        <artifactId>spotbugs-maven-plugin</artifactId>
-        <version>${spotbugs-maven-plugin.version}</version>
-        <configuration>
-          <effort>Max</effort>
-          <threshold>Default</threshold>
-          <omitVisitors/>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.jacoco</groupId>
-        <artifactId>jacoco-maven-plugin</artifactId>
-        <version>${maven-jacoco-plugin.version}</version>
-        <configuration>
-          <dataFile>${project.build.directory}/jacoco/jacoco.exec</dataFile>
-          <excludes>
-            <exclude>com/puppycrawl/tools/checkstyle/ant/CheckstyleAntTask*.class</exclude>
-            <exclude>com/puppycrawl/tools/checkstyle/grammars/*.class</exclude>
-            <exclude>com/puppycrawl/tools/checkstyle/grammars/javadoc/*.class</exclude>
-            <exclude>com/puppycrawl/tools/checkstyle/gui/*.class</exclude>
           </excludes>
         </configuration>
       </plugin>
