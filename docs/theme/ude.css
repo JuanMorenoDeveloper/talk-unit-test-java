@@ -457,6 +457,10 @@ section[data-background-size] .footer span {
   box-shadow: none;
 }
 
+.reveal pre code {
+  font-size: 28.8px;
+}
+
 .red {
   color: red;
 }
@@ -467,6 +471,16 @@ section[data-background-size] .footer span {
 
 .blue {
   color: blue;
+}
+
+@media print {
+  .backgrounds {
+    background-color: white;
+  }
+
+  .reveal p {
+    text-shadow: none;
+  }
 }
 
 /*# sourceMappingURL=ude.css.map */

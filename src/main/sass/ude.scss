@@ -207,7 +207,9 @@ section[data-background-size] .footer span {
 .reveal pre {
   box-shadow: none;
 }
-
+.reveal pre code {
+  font-size: $mainFontSize*.6;
+}
 .red {
   color: red;
 }
@@ -219,3 +221,14 @@ section[data-background-size] .footer span {
 .blue {
   color: blue;
 }
+
+//Fix background and text when export pdf
+@media print {
+  .backgrounds {
+    background-color: white;
+  }
+  .reveal p {
+    text-shadow: none;
+  }
+}
+
